@@ -52,8 +52,11 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'false'
         shell: bash
         run: |
-          git tag ${{ steps.get-changelog-info.outputs.last-change-version }}
-          # this could fail in a merge without changesets
-          # (e.g. update README.md, merge)
-          # but that's a bit naughty anyway, so we'll let it fail
-          git push --tag
+          TAG_NAME=${{ steps.get-changelog-info.outputs.last-change-version }}
+          # try not to recreate the tag
+          if git tag -l | grep -q "^${TAG_NAME}$"; then
+            echo "Tag ${TAG_NAME} already exists"
+          else
+            git tag ${TAG_NAME}
+            git push --tag
+          fi
