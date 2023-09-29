@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get Change Info
-        uses: chizmw/changesets-changelog-info@v0.1.1
+        uses: chizmw/changesets-changelog-info@v0.1.5
         id: get-changelog-entry
 
       - name: Show Change Info

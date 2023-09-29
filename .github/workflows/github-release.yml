@@ -19,7 +19,7 @@ jobs:
 
       - name: Get Changelog Entry
         id: get-changelog-entry
-        uses: chizmw/changesets-changelog-info@v0.1.1
+        uses: chizmw/changesets-changelog-info@v0.1.5
 
       - name: Show Change Info
         shell: bash
