@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.CHANGESETS_TOKEN }}
           # we want to know about all the tags
@@ -46,7 +46,7 @@ jobs:
 
       # we use ourself to get the information for the release
       - name: Get Change Info
-        uses: chizmw/changesets-changelog-info@v0.1.1
+        uses: chizmw/changesets-changelog-info@v0.1.5
         id: get-changelog-info
 
       - name: Debug Tag Step

@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Git User
         uses: fregante/setup-git-user@v2
 
       # we use ourself to get the information for the release
       - name: Get Change Info
-        uses: chizmw/changesets-changelog-info@v0.1.1
+        uses: chizmw/changesets-changelog-info@v0.1.5
         id: get-changelog-info
 
       - name: Update Version In Files
