@@ -66,6 +66,10 @@ jobs:
         shell: bash
         run: |
           TAG_NAME=${{ steps.get-changelog-info.outputs.last-change-version }}
+          # LAZY HACK: if the TAG_NAME does not start with 'v' then add it
+          if [[ ! "${TAG_NAME}" =~ ^v.* ]]; then
+            TAG_NAME="v${TAG_NAME}"
+          fi
           # try not to recreate the tag
           if git tag -l | grep -q "^${TAG_NAME}$"; then
             echo "Tag ${TAG_NAME} already exists"
