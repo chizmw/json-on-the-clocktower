@@ -86,11 +86,26 @@ class OneTrueJson:
         if "character_by_id" not in self.data:
             self.data["character_by_id"] = {}
 
-        # this is the base URl for the icons
-        image_base_url = (
-            "https://raw.githubusercontent.com/chizmw/"
-            "json-on-the-clocktower/main/data/images"
+        # this is the base URl for the icons,
+        # we try to use the GITHUB_REPOSITORY_OWNER environment variable, if we can
+        # but to avoid manual changes we allow if to fallback to BOTC_JSON_GITHUB_REPOSITORY_OWNER
+        # and if that's not set, we fallback to chizmw
+        repo_owner = os.environ.get(
+            "GITHUB_REPOSITORY_OWNER",
+            os.environ.get(
+                "BOTC_JSON_GITHUB_REPOSITORY_OWNER",
+                "chizmw",
+            ),
         )
+        # we always generate for the `main` branch, so we can hardcode that
+        # the only place this gets modified is in the test suite
+        image_base_url = (
+            "https://raw.githubusercontent.com/"
+            f"{repo_owner}"
+            "/json-on-the-clocktower/main/data/images"
+        )
+
+        print(f"image_base_url: {image_base_url}")
 
         # loop through the roles
         for role in self.incoming.get_roles_list():
