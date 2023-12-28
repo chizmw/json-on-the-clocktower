@@ -1,7 +1,7 @@
 [
   {
     "id": "MINION",
-    "name": "MINION",
+    "name": "Minion Info",
     "edition": "_meta",
     "team": "_meta",
     "firstNightReminder": "If 7 or more players: wake up all of the Minions. They make eye contact with each other. Show the 'This is the Demon' card. Point to the Demon.",
@@ -12,7 +12,7 @@
   },
   {
     "id": "DEMON",
-    "name": "DEMON",
+    "name": "Demon Info",
     "edition": "_meta",
     "team": "_meta",
     "firstNightReminder": "If 7 or more players: wake up the Demon. Show the 'These are your minions' card. Point to each Minion. Show the 'These characters are not in play' card. Show 3 character tokens of Good characters that are not in play",
@@ -23,7 +23,7 @@
   },
   {
     "id": "DUSK",
-    "name": "DUSK",
+    "name": "Dusk",
     "edition": "_meta",
     "team": "_meta",
     "firstNightReminder": "",
@@ -34,7 +34,7 @@
   },
   {
     "id": "DAWN",
-    "name": "DAWN",
+    "name": "Dawn",
     "edition": "_meta",
     "team": "_meta",
     "firstNightReminder": "Wait approximately 10 seconds. Call for eyes open, then immediately announce which players (if any) died.",
