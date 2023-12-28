@@ -1,5 +1,29 @@
 # json-on-the-clocktower
 
+## 0.0.25
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 7 updates ([#113](https://github.com/chizmw/json-on-the-clocktower/pull/113))
+
+- feat(character): added the Ojo ([#128](https://github.com/chizmw/json-on-the-clocktower/pull/128))
+
+- chore(deps-dev): bump the dependencies group with 4 updates ([#127](https://github.com/chizmw/json-on-the-clocktower/pull/127))
+
+- chore(deps-dev): bump black from 23.9.1 to 23.10.0 ([#108](https://github.com/chizmw/json-on-the-clocktower/pull/108))
+
+- chore(deps-dev): bump the dependencies group with 4 updates ([#119](https://github.com/chizmw/json-on-the-clocktower/pull/119))
+
+- chore(deps-dev): bump the dependencies group with 5 updates ([#125](https://github.com/chizmw/json-on-the-clocktower/pull/125))
+
+- chore(deps-dev): bump pytest from 7.4.2 to 7.4.3 ([#112](https://github.com/chizmw/json-on-the-clocktower/pull/112))
+
+- chore(deps): bump the dependencies group with 4 updates ([#124](https://github.com/chizmw/json-on-the-clocktower/pull/124))
+
+- chore(deps-dev): bump mypy from 1.5.1 to 1.6.0 ([#106](https://github.com/chizmw/json-on-the-clocktower/pull/106))
+
+- chore(deps-dev): bump the dependencies group with 1 update ([#101](https://github.com/chizmw/json-on-the-clocktower/pull/101))
+
 ## 0.0.24
 
 ### Patch Changes
