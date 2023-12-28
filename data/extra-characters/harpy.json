@@ -10,6 +10,7 @@
     "setup": false,
     "name": "Harpy",
     "team": "minion",
-    "ability": "Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or both might die."
+    "ability": "Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or both might die.",
+    "edition": "experimental"
   }
 ]

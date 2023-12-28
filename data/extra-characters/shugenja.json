@@ -8,6 +8,7 @@
     "setup": false,
     "name": "Shugenja",
     "team": "townsfolk",
+    "edition": "experimental",
     "ability": "You start knowing if your closest evil player is clockwise or anti-clockwise. If equidistant, this info is arbitrary."
   }
 ]
