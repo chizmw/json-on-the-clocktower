@@ -224,7 +224,9 @@ class TestJsonData:
             # if our branch is NOT main, then we need to replace 'main' in the URL
             # with our branch name
             branch = os.environ.get("GITHUB_HEAD_REF", "main")
+            print(f"::notice::in github, working in branch: '{branch}'")
             remote_image_url = role["remote_image"].replace("main", branch)
+            print(f"::notice::checking remote_image_url: '{remote_image_url}'")
             # URL looks sane
             self.remote_image_checks(remote_image_url)
 
@@ -241,7 +243,9 @@ class TestJsonData:
             # if our branch is NOT main, then we need to replace 'main' in the URL
             # with our branch name
             branch = os.environ.get("GITHUB_HEAD_REF", "main")
+            print(f"::notice::in github, working in branch: '{branch}'")
             remote_image_url = role["remote_image"].replace("main", branch)
+            print(f"::notice::checking remote_image_url: '{remote_image_url}'")
 
             # URL looks sane
             self.remote_image_checks(remote_image_url)
