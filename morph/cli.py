@@ -18,7 +18,7 @@ def combiner(force_fetch):
     one_true_json = OneTrueJson(incoming)
 
     # write the data to a file
-    one_true_json.write("data/generated/roles-combined-v2.json")
+    one_true_json.write("data/generated/roles-combined-v3.json")
     one_true_json.write("data/generated/roles-combined.json")
 
 
