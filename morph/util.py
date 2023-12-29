@@ -1,6 +1,8 @@
 """ Utility functions for the morph package. """
 
+import logging
 import json
+import os
 import requests
 
 
@@ -47,3 +49,21 @@ def cleanup_role_id(id_slug) -> str:
     id_slug = id_slug.lower()
 
     return id_slug
+
+
+def configure_logger(logger_name: str) -> logging.Logger:
+    """Configure the logger"""
+    logger = logging.getLogger(logger_name)
+
+    log_level = os.environ.get("LOGLEVEL", "INFO").upper()
+    logger.setLevel(level=log_level)
+
+    ch = logging.StreamHandler()
+    formatter = logging.Formatter(
+        "%(asctime)s [%(filename)s:%(lineno)s] %(levelname)s: %(message)s"
+    )
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+    logger.debug("Logging started for %s", logger.name)
+
+    return logger

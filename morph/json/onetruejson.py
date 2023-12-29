@@ -8,7 +8,11 @@ import os
 from typing import Any
 
 from morph.json.incoming import JsonIncoming
-from morph.util import cleanup_role_id
+from morph.util import cleanup_role_id, configure_logger
+
+
+LOGGER = configure_logger(__name__)
+LOGGER.debug("Logging started for %s", LOGGER.name)
 
 
 class OneTrueJson:
@@ -35,7 +39,7 @@ class OneTrueJson:
 
     def write(self, output_file: str) -> None:
         """Write the data to a JSON file"""
-        print(f"Writing combined JSON data to '{output_file}' …")
+        LOGGER.info("Writing combined JSON data to '%s' …", output_file)
 
         # get the dirname of the filename
         dirname = os.path.dirname(output_file)
@@ -105,7 +109,7 @@ class OneTrueJson:
             "/json-on-the-clocktower/main/data/images"
         )
 
-        print(f"image_base_url: {image_base_url}")
+        LOGGER.debug("image_base_url: %s", image_base_url)
 
         # loop through the roles
         for role in self.incoming.get_roles_list():
@@ -132,8 +136,11 @@ class OneTrueJson:
                 if "edition" not in role:
                     role["edition"] = "{missing}"
 
-                print(
-                    f"""edition differs for {role['id']}: "{role['edition']}" vs "{edition}" """
+                LOGGER.debug(
+                    "edition differs for %s: '%s' vs '%s'",
+                    role["id"],
+                    role["edition"],
+                    edition,
                 )
 
                 # set the edition
