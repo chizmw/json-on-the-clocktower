@@ -58,6 +58,10 @@ class TestJsonData:
         # clear the checked URLs
         self._checked_urls = set()
 
+        # we should never have an empty value for the git branch
+        assert self._git_branch is not None
+        assert self._git_branch != ""
+
     def test_top_level_keys(self):
         """Test that the top-level keys in the data file are as expected."""
 
@@ -251,6 +255,9 @@ class TestJsonData:
             remote_image_url = role["remote_image"]
             if not self._on_default_branch():
                 branch = self._git_branch
+                # assert that the branch is not None, and also not empty
+                assert branch is not None
+                assert branch != ""
                 LOGGER.info("in github, working in non-default branch: '%s'", branch)
                 remote_image_url = role["remote_image"].replace("main", branch)
             # URL looks sane
