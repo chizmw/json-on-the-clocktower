@@ -66,8 +66,7 @@ class TestJsonData:
             [
                 "character_by_id",
                 "editions",
-                "jinxes",
-                "role_list",
+                "roles",
                 "teams",
             ]
         )
@@ -77,9 +76,10 @@ class TestJsonData:
 
         # for the id of each  role in the role_list, we should have a
         # corresponding entry in character_by_id
-        for role in self.json_data["role_list"]:
-            role_id = role.get("id", None)
-            assert role_id is not None
+        for role_id in self.json_data["roles"]:
+            # the role-id should be a string
+            assert isinstance(role_id, str)
+            # it should exist in character_by_id
             assert (
                 role_id in self.json_data["character_by_id"]
             ), f"Missing role_id '{role_id}' in character_by_id, exists in role_list"
@@ -253,28 +253,6 @@ class TestJsonData:
                 branch = self._git_branch
                 LOGGER.info("in github, working in non-default branch: '%s'", branch)
                 remote_image_url = role["remote_image"].replace("main", branch)
-            # URL looks sane
-            self.remote_image_checks(remote_image_url)
-
-    # pytest skip if we are NOT running in GitHub Actions
-    @pytest.mark.skipif(not in_github_actions(), reason="Not running in GitHub Actions")
-    def test_remote_images_role_list(self):
-        """Test that the remote_image URLs are sane in role_list"""
-        # all entries in role_list should have a remote_image key
-        # and the URL should be a 200 response
-        for role in self.json_data["role_list"]:
-            # key exists
-            assert "remote_image" in role
-            # we can assume we're running in github feature branches
-            # if our branch is NOT main, then we need to replace 'main' in the URL
-            # with our branch name
-            remote_image_url = role["remote_image"]
-            if not self._on_default_branch():
-                branch = self._git_branch
-                LOGGER.info("in github, working in non-default branch: '%s'", branch)
-                remote_image_url = role["remote_image"].replace("main", branch)
-            LOGGER.info("checking remote_image_url: '%s'", remote_image_url)
-
             # URL looks sane
             self.remote_image_checks(remote_image_url)
 
