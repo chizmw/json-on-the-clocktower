@@ -59,39 +59,8 @@ jobs:
           name: test-results-${{ matrix.python-version }}
           path: test-results-${{ matrix.python-version }}.xml
 
-      - name: Publish Test Report
-        uses: mikepenz/action-junit-report@v4
-        if: success() || failure() # always run even if the previous step fails
+      - name: Test Summary
+        uses: test-summary/action@v2
         with:
-          annotate_notice: true
-          check_title_template: '{{SUITE_NAME}} {{TEST_NAME}}'
-          detailed_summary: false
-          fail_on_failure: true
-          include_passed: true
-          report_paths: '**/test-results-${{ matrix.python-version }}.xml'
-          require_tests: true
-          summary: true
-
-      - name: Surface failing tests
+          paths: '**/test-results-*.xml'
         if: always()
-        uses: pmeier/pytest-results-action@main
-        with:
-          # A list of JUnit XML files, directories containing the former, and
-          # wildcard
-          # patterns to process.
-          # See @actions/glob for supported patterns.
-          path: test-results-${{ matrix.python-version }}.xml
-
-          # Add a summary of the results at the top of the report
-          # Default: true
-          summary: true
-
-          # Select which results should be included in the report.
-          # Follows the same syntax as
-          # `pytest -r`
-          # Default: fEX
-          display-options: fEX
-
-          # Fail the workflow if no JUnit XML was found.
-          # Default: true
-          fail-on-empty: true
