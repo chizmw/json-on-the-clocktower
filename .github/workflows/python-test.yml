@@ -35,6 +35,15 @@ jobs:
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: ${{ matrix.poetry-version }}
+      - name: Setup a local virtual environment (if no poetry.toml file)
+        run: |
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+      - uses: actions/cache@v3
+        name: Define a cache for the virtual environment
+        with:
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}-${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           poetry install
@@ -47,7 +56,7 @@ jobs:
       - name: Archive test results
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
+          name: test-results-${{ matrix.python-version }}
           path: test-results-${{ matrix.python-version }}.xml
 
       - name: Publish Test Report
@@ -56,7 +65,7 @@ jobs:
         with:
           annotate_notice: true
           check_title_template: '{{SUITE_NAME}} {{TEST_NAME}}'
-          detailed_summary: true
+          detailed_summary: false
           fail_on_failure: true
           include_passed: true
           report_paths: '**/test-results-${{ matrix.python-version }}.xml'
