@@ -17,7 +17,7 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  pytest:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
