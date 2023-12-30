@@ -1,5 +1,15 @@
 # json-on-the-clocktower
 
+## 0.0.27
+
+### Patch Changes
+
+- fix: update github release to use v prefixed version ([#134](https://github.com/chizmw/json-on-the-clocktower/pull/134))
+
+- fix: use last-change-version-v instead of last-change-version ([#134](https://github.com/chizmw/json-on-the-clocktower/pull/134))
+
+- chore: add version info to changelog-info.yml ([#134](https://github.com/chizmw/json-on-the-clocktower/pull/134))
+
 ## 0.0.26
 
 ### Patch Changes
