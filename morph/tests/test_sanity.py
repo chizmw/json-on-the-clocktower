@@ -1,9 +1,13 @@
 """ Tests to ensure some basic generated file sanity """
 
 import json
+import logging
 import os
+
 import pytest
 import requests
+
+LOGGER = logging.getLogger(__name__)
 
 
 def in_github_actions():
@@ -14,24 +18,49 @@ def in_github_actions():
 class TestJsonData:
     """Tests for the contents of the generated JSON data."""
 
-    @classmethod
-    def setup_class(cls):
-        """Load the JSON data from the file."""
-        cls.json_data: dict  # type: ignore
-        cls.data_file: str = "data/generated/roles-combined.json"  # type: ignore
+    _branch: str = os.environ.get("GITHUB_HEAD_REF", "main")
+    _data_file: str = "data/generated/roles-combined.json"
+    _json_data: dict = {}
+    _checked_urls: set = set()
 
-        assert os.path.exists(cls.data_file)
+    @property
+    def _git_branch(self) -> str:
+        """Return the name of the git branch we're running in"""
+        return self._branch
 
-        # open the data file
-        with open(cls.data_file, "r", encoding="utf-8") as data_file:
+    @property
+    def data_file(self) -> str:
+        """Return the name of the data file we're testing"""
+        return self._data_file
+
+    @property
+    def json_data(self) -> dict:
+        """Return the JSON data we're testing"""
+        return self._json_data
+
+    @json_data.setter
+    def json_data(self, value: dict) -> None:
+        """Set the JSON data we're testing"""
+        self._json_data = value
+
+    @pytest.fixture(autouse=True)
+    def setup(self):
+        """Setup our 'self' for each test"""
+        # make sure our data file exists
+        assert os.path.exists(str(self.data_file))
+        # load the data file
+        assert self.json_data is not None
+        with open(str(self.data_file), "r", encoding="utf-8") as data_file:
             # load the data
-            cls.json_data = json.load(data_file)
-
+            self.json_data = json.load(data_file)
         # check the data is loaded
-        assert cls.json_data is not None
+        assert self.json_data is not None
+        # clear the checked URLs
+        self._checked_urls = set()
 
-        # keep track of the URLs we've checked
-        cls._checked_urls = set()
+        # we should never have an empty value for the git branch
+        assert self._git_branch is not None
+        assert self._git_branch != ""
 
     def test_top_level_keys(self):
         """Test that the top-level keys in the data file are as expected."""
@@ -41,8 +70,7 @@ class TestJsonData:
             [
                 "character_by_id",
                 "editions",
-                "jinxes",
-                "role_list",
+                "roles",
                 "teams",
             ]
         )
@@ -52,9 +80,10 @@ class TestJsonData:
 
         # for the id of each  role in the role_list, we should have a
         # corresponding entry in character_by_id
-        for role in self.json_data["role_list"]:
-            role_id = role.get("id", None)
-            assert role_id is not None
+        for role_id in self.json_data["roles"]:
+            # the role-id should be a string
+            assert isinstance(role_id, str)
+            # it should exist in character_by_id
             assert (
                 role_id in self.json_data["character_by_id"]
             ), f"Missing role_id '{role_id}' in character_by_id, exists in role_list"
@@ -223,25 +252,17 @@ class TestJsonData:
             # we can assume we're running in github feature branches
             # if our branch is NOT main, then we need to replace 'main' in the URL
             # with our branch name
-            branch = os.environ.get("GITHUB_HEAD_REF", "main")
-            remote_image_url = role["remote_image"].replace("main", branch)
+            remote_image_url = role["remote_image"]
+            if not self._on_default_branch():
+                branch = self._git_branch
+                # assert that the branch is not None, and also not empty
+                assert branch is not None
+                assert branch != ""
+                LOGGER.info("in github, working in non-default branch: '%s'", branch)
+                remote_image_url = role["remote_image"].replace("main", branch)
             # URL looks sane
             self.remote_image_checks(remote_image_url)
 
-    # pytest skip if we are NOT running in GitHub Actions
-    @pytest.mark.skipif(not in_github_actions(), reason="Not running in GitHub Actions")
-    def test_remote_images_role_list(self):
-        """Test that the remote_image URLs are sane in role_list"""
-        # all entries in role_list should have a remote_image key
-        # and the URL should be a 200 response
-        for role in self.json_data["role_list"]:
-            # key exists
-            assert "remote_image" in role
-            # we can assume we're running in github feature branches
-            # if our branch is NOT main, then we need to replace 'main' in the URL
-            # with our branch name
-            branch = os.environ.get("GITHUB_HEAD_REF", "main")
-            remote_image_url = role["remote_image"].replace("main", branch)
-
-            # URL looks sane
-            self.remote_image_checks(remote_image_url)
+    def _on_default_branch(self) -> bool:
+        """Check if we're on the default branch"""
+        return self._git_branch == "main"

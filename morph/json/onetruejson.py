@@ -5,10 +5,47 @@
 
 import json
 import os
+from dataclasses import dataclass, field
 from typing import Any
 
 from morph.json.incoming import JsonIncoming
-from morph.util import cleanup_role_id
+from morph.util import cleanup_role_id, configure_logger
+
+LOGGER = configure_logger(__name__)
+LOGGER.debug("Logging started for %s", LOGGER.name)
+
+
+@dataclass
+class OneTrueData:
+    """A class to hold the data that we'll be writing to a JSON file"""
+
+    character_by_id: dict[str, Any] = field(default_factory=dict)
+    editions: list[dict[str, Any]] = field(default_factory=list)
+    raw_jinxes: list[dict[str, Any]] = field(default_factory=list)
+    raw_role_list: list[dict[str, Any]] = field(default_factory=list)
+    teams: dict[str, Any] = field(default_factory=dict)
+
+    def write(self, output_file: str) -> None:
+        """Write the data to a JSON file"""
+        obj = {
+            "character_by_id": self.character_by_id,
+            "editions": self.editions,
+            "teams": self.teams,
+        }
+
+        # we want to get the "id" values from the raw_role_list
+        role_ids = [role["id"] for role in self.raw_role_list]
+        # sort the ids
+        role_ids.sort()
+        # add the ids to the object
+        obj["roles"] = role_ids
+
+        with open(output_file, "w", encoding="utf-8") as fhandle:
+            try:
+                print(json.dumps(obj, indent=4, sort_keys=True), file=fhandle)
+            except Exception as e:
+                LOGGER.error("Error writing JSON data: %s", e)
+                raise e
 
 
 class OneTrueJson:
@@ -16,43 +53,42 @@ class OneTrueJson:
 
     def __init__(self, incoming: JsonIncoming):
         self.incoming = incoming
+
+        self.otdata = OneTrueData()
+
         self.data: dict[str, Any] = {}
 
         # add data for character_by_id
         self._prepare_role_by_id()
 
         # add role list to data
-        self.data["role_list"] = self.incoming.get_roles_list()
+        self.otdata.raw_role_list = self.incoming.get_roles_list()
 
         # add (raw) list of jinxes to data
-        self.data["jinxes"] = self.incoming.get_jinx_info()
+        self.otdata.raw_jinxes = self.incoming.get_jinx_info()
 
         # add editions to data
-        self.data["editions"] = self.incoming.get_editions()
+        self.otdata.editions = self.incoming.get_editions()
 
         # add the team data to the data
-        self.data["teams"] = self._prepare_team_data()
+        self.otdata.teams = self._prepare_team_data()
 
     def write(self, output_file: str) -> None:
         """Write the data to a JSON file"""
-        print(f"Writing combined JSON data to '{output_file}' …")
+        LOGGER.info("Writing combined JSON data to '%s' …", output_file)
 
         # get the dirname of the filename
         dirname = os.path.dirname(output_file)
         # make sure the directory exists
         os.makedirs(dirname, exist_ok=True)
 
-        # write the data to the file
-        with open(output_file, "w", encoding="utf-8") as fhandle:
-            json.dump(self.data, fhandle, indent=4, sort_keys=True)
-            # make sure we have a newline at the end of the file
-            fhandle.write("\n")
+        self.otdata.write(output_file)
 
     def _prepare_team_data(self) -> dict[str, Any]:
         team_data: dict[str, Any] = {}
 
         # loop through the role_list
-        for role in self.data["role_list"]:
+        for role in self.otdata.raw_role_list:
             # if the role doesn't have a team, set it to _Unknown
             if "team" not in role:
                 role["team"] = "_Unknown"
@@ -83,14 +119,29 @@ class OneTrueJson:
     def _prepare_role_by_id(self) -> None:
         """Prepare the character_by_id data"""
         # make sure we have a character_by_id key in the data
-        if "character_by_id" not in self.data:
-            self.data["character_by_id"] = {}
+        # if "character_by_id" not in self.data:
+        # self.data["character_by_id"] = {}
 
-        # this is the base URl for the icons
-        image_base_url = (
-            "https://raw.githubusercontent.com/rsarvar1a/"
-            "json-on-the-clocktower/main/data/images"
+        # this is the base URl for the icons,
+        # we try to use the GITHUB_REPOSITORY_OWNER environment variable, if we can
+        # but to avoid manual changes we allow if to fallback to BOTC_JSON_GITHUB_REPOSITORY_OWNER
+        # and if that's not set, we fallback to chizmw
+        repo_owner = os.environ.get(
+            "GITHUB_REPOSITORY_OWNER",
+            os.environ.get(
+                "BOTC_JSON_GITHUB_REPOSITORY_OWNER",
+                "chizmw",
+            ),
         )
+        # we always generate for the `main` branch, so we can hardcode that
+        # the only place this gets modified is in the test suite
+        image_base_url = (
+            "https://raw.githubusercontent.com/"
+            f"{repo_owner}"
+            "/json-on-the-clocktower/main/data/images"
+        )
+
+        LOGGER.debug("image_base_url: %s", image_base_url)
 
         # loop through the roles
         for role in self.incoming.get_roles_list():
@@ -117,8 +168,11 @@ class OneTrueJson:
                 if "edition" not in role:
                     role["edition"] = "{missing}"
 
-                print(
-                    f"""edition differs for {role['id']}: "{role['edition']}" vs "{edition}" """
+                LOGGER.debug(
+                    "edition differs for %s: '%s' vs '%s'",
+                    role["id"],
+                    role["edition"],
+                    edition,
                 )
 
                 # set the edition
@@ -149,7 +203,7 @@ class OneTrueJson:
             )
 
             # add the role to the character_by_id data
-            self.data["character_by_id"][role["id"]] = role
+            self.otdata.character_by_id[role["id"]] = role
 
     def __str__(self):
         """Return a string representation of the data"""

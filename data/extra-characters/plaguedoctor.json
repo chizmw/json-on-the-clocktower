@@ -6,6 +6,7 @@
     "setup": false,
     "name": "Plague Doctor",
     "team": "outsider",
-    "ability": "If you die, the Storyteller gains a not-in-play Minion ability."
+    "ability": "If you die, the Storyteller gains a not-in-play Minion ability.",
+    "edition": "experimental"
   }
 ]

@@ -2,7 +2,7 @@
   {
     "id": "organgrinder",
     "name": "Organ Grinder",
-    "edition": "",
+    "edition": "experimental",
     "team": "minion",
     "firstNight": 0,
     "firstNightReminder": "",

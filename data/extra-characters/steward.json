@@ -9,6 +9,7 @@
     "setup": false,
     "name": "Steward",
     "team": "townsfolk",
+    "edition": "experimental",
     "ability": "You start knowing 1 good player."
   }
 ]

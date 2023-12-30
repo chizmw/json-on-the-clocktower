@@ -9,6 +9,7 @@
     "setup": false,
     "name": "High Priestess",
     "team": "townsfolk",
+    "edition": "experimental",
     "ability": "Each night, learn which player the Storyteller believes you should talk to most."
   }
 ]

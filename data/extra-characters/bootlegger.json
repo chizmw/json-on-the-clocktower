@@ -2,7 +2,7 @@
   {
     "id": "bootlegger",
     "image": "your direct url here",
-    "edition": "custom",
+    "edition": "experimental",
     "firstNight": 1.2,
     "firstNightReminder": "Announce the Bootlegger is in play and inform the group of all homebrew characters and/or rules you are using in this game. ",
     "setup": false,

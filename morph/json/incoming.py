@@ -8,7 +8,10 @@ import json
 import os
 from typing import Any, Optional
 
-from morph.util import fetch_remote_data, load_data
+from morph.util import configure_logger, fetch_remote_data, load_data
+
+LOGGER = configure_logger(__name__)
+LOGGER.debug("Logging started for %s", LOGGER.name)
 
 
 class JsonIncoming:
@@ -146,21 +149,23 @@ class JsonIncoming:
             # if we're using force_fetch, or we don't have the file, fetch it
             # if we do, just say so
             if os.path.exists(local_path) and not self.force_fetch:
-                print(
-                    f"Skipping remote fetch for '{name}';"
-                    f" it already exists locally as '{local_path}'"
+                LOGGER.info(
+                    "Skipping remote fetch for '%s';"
+                    " it already exists locally as '%s'",
+                    name,
+                    local_path,
                 )
 
             else:
-                print(f"Fetching {name} from {url} …")
+                LOGGER.info("Fetching %s from %s …", name, url)
                 data = fetch_remote_data(url)
                 # write the data to a file
                 with open(local_path, "w", encoding="utf-8") as fhandle:
-                    print(f"Writing {name} to {local_path} …")
+                    LOGGER.debug("Writing %s to %s …", name, local_path)
                     json.dump(data, fhandle, indent=4, sort_keys=True)
 
             # either way we now have the file so we can load it and add it to self.data.external
-            print(f"Loading {name} from {local_path} …")
+            LOGGER.info("Loading %s from %s …", name, local_path)
             data = load_data(local_path)
 
             # make self.data.external if it doesn't exist
@@ -174,17 +179,17 @@ class JsonIncoming:
         # we need to load data/role-edition.json
         # and add it to self.data.edition
         filename = "data/role-edition.json"
-        print(f"Loading {filename} …")
+        LOGGER.info("Loading %s …", filename)
         data_roleedition = load_data(filename)
         self.data["edition-lookup"] = data_roleedition
 
         # load the edition meta data from data/edition-info.json
         filename = "data/edition-info.json"
-        print(f"Loading {filename} …")
+        LOGGER.info("Loading %s …", filename)
         data_info = load_data(filename)
         self.data["edition-info"] = data_info
         # print a json dump of edition-info
-        print(json.dumps(data_info, indent=4, sort_keys=True))
+        # print(json.dumps(data_info, indent=4, sort_keys=True))
 
         # loop through the data and add to self.data.editions
         # where the key is the edition and the value is a dict of id and name
@@ -194,10 +199,10 @@ class JsonIncoming:
                 edition = "experimental"
             # if the edition isn't in self.data.editions, add it
             if edition not in self.data["editions"]:
-                print(f"Adding {edition} to self.data.editions …")
+                LOGGER.debug("Adding %s to self.data.editions …", edition)
                 # we will have a meta block for the edition
                 self.data["editions"][edition] = {}
-                print(self.data["edition-info"][edition])
+                LOGGER.debug(self.data["edition-info"][edition])
                 self.data["editions"][edition]["_meta"] = self.data["edition-info"][
                     edition
                 ]
@@ -226,6 +231,26 @@ class JsonIncoming:
 
         return role_files
 
+    def _edition_sanity_check(self, data, source_file) -> None:
+        # loop through the list of roles
+        for role in data:
+            # - warn about anything that doesn't have an edition
+            if "edition" not in role:
+                LOGGER.debug(
+                    "role '%s' has no edition field in the source data [%s]",
+                    role["id"],
+                    source_file,
+                )
+                continue
+
+            # - warn if the edition is an empty string
+            if role["edition"] == "":
+                LOGGER.debug(
+                    "role '%s' has an empty string for the edition field in the source data [%s]",
+                    role["id"],
+                    source_file,
+                )
+
     def _load_local_data(self):
         """Load data from local JSON files"""
 
@@ -237,8 +262,11 @@ class JsonIncoming:
 
         # load the local data
         for filename in local_roledata_files:
-            print(f"Loading {filename} …")
+            LOGGER.info("Loading %s …", filename)
             data = load_data(filename)
+
+            # sanity check the edition data
+            self._edition_sanity_check(data, filename)
 
             # we'll store the roles in self.data.roles
             if "roles_list" not in self.data:
@@ -246,6 +274,9 @@ class JsonIncoming:
 
             # extend the roles_list with the roles from the file
             self.data["roles_list"].extend(data)
+
+        # we've loaded data from all the file sources we know about
+        LOGGER.info("Loaded %d roles", len(self.data["roles_list"]))
 
     def __str__(self):
         """Return a string representation of the data"""

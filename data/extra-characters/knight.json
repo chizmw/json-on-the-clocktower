@@ -9,6 +9,7 @@
     "setup": false,
     "name": "Knight",
     "team": "townsfolk",
+    "edition": "experimental",
     "ability": "You start knowing 2 players that are not the Demon."
   }
 ]
