@@ -1,5 +1,21 @@
 # json-on-the-clocktower
 
+## 0.0.26
+
+### Patch Changes
+
+- chore: pre-commit autoupdate ([#131](https://github.com/chizmw/json-on-the-clocktower/pull/131))
+
+- test: fix and improve the test_sanity.py tests ([#131](https://github.com/chizmw/json-on-the-clocktower/pull/131))
+
+- chore: use test-summary/action@v2 (remove existing test result actions) ([#131](https://github.com/chizmw/json-on-the-clocktower/pull/131))
+
+- chore: replace "role_list" (raw incoming data) with "roles" (just role ids) in combined json ([#131](https://github.com/chizmw/json-on-the-clocktower/pull/131))
+
+- chore: some data cleanup and fixes ([#131](https://github.com/chizmw/json-on-the-clocktower/pull/131))
+
+- feat: allow the GITHUB_REPOSITORY_OWNER to be set for the image base URL ([#131](https://github.com/chizmw/json-on-the-clocktower/pull/131))
+
 ## 0.0.25
 
 ### Patch Changes
