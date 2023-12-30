@@ -28,6 +28,9 @@ jobs:
           ```markdown
           ${{ steps.get-changelog-entry.outputs.last-change-entry }}
           ```
+
+          - Version: ${{ steps.get-changelog-entry.outputs.last-change-version }}
+          - Version V: ${{ steps.get-changelog-entry.outputs.last-change-version-v }}
           EOInfo
 
       - name: Fail If Empty
