@@ -1,0 +1,5 @@
+{
+  "python.testing.pytestArgs": ["morph/tests", "--junit-xml=test-results.xml"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
+}
