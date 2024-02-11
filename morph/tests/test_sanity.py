@@ -70,6 +70,7 @@ class TestJsonData:
             [
                 "character_by_id",
                 "editions",
+                "jinxes",
                 "roles",
                 "teams",
             ]

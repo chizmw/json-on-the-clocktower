@@ -1,4 +1,5 @@
 """ This file holds the class that represents the JSON that we'll be writing to """
+
 # This file holds the class that represents the JSON that we'll be writing to a
 # "bigger, better" JSON file.
 
@@ -31,6 +32,7 @@ class OneTrueData:
             "character_by_id": self.character_by_id,
             "editions": self.editions,
             "teams": self.teams,
+            "jinxes": self.raw_jinxes,
         }
 
         # we want to get the "id" values from the raw_role_list
