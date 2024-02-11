@@ -1,5 +1,25 @@
 # json-on-the-clocktower
 
+## 0.0.28
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 2 updates ([#141](https://github.com/chizmw/json-on-the-clocktower/pull/141))
+
+- fix: return jinxes to JSON data file ([#147](https://github.com/chizmw/json-on-the-clocktower/pull/147))
+
+- chore(deps-dev): bump the dependencies group with 5 updates ([#145](https://github.com/chizmw/json-on-the-clocktower/pull/145))
+
+- chore(deps): bump the dependencies group with 4 updates ([#146](https://github.com/chizmw/json-on-the-clocktower/pull/146))
+
+- chore(deps-dev): bump the dependencies group with 4 updates ([#137](https://github.com/chizmw/json-on-the-clocktower/pull/137))
+
+- add Kazali and Village Idiot ([#148](https://github.com/chizmw/json-on-the-clocktower/pull/148))
+
+- chore(deps-dev): bump the dependencies group with 2 updates ([#149](https://github.com/chizmw/json-on-the-clocktower/pull/149))
+
+- chore(deps-dev): bump the dependencies group with 3 updates ([#139](https://github.com/chizmw/json-on-the-clocktower/pull/139))
+
 ## 0.0.27
 
 ### Patch Changes
