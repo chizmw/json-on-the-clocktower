@@ -1219,6 +1219,23 @@
             "setup": false,
             "team": "townsfolk"
         },
+        "kazali": {
+            "ability": "Each night*, choose a player: they die. [You choose which players are Minions. -? to +? Outsiders]",
+            "edition": "experimental",
+            "firstNight": 3,
+            "firstNightReminder": "The Kazali points to a player and a Minion on the character sheet. They do this for as many Minions as should be in play. Change those players' tokens to the chosen Minion tokens in the Grim. Wake those players, show them the 'You Are' card, the Minions they have become, and a thumbs down.",
+            "id": "kazali",
+            "image": "your direct url here",
+            "name": "Kazali",
+            "otherNight": 38,
+            "otherNightReminder": "The Kazali points to a player. That player dies",
+            "reminders": [
+                "Dead"
+            ],
+            "remote_image": "https://raw.githubusercontent.com/chizmw/json-on-the-clocktower/main/data/images/kazali.png",
+            "setup": true,
+            "team": "demon"
+        },
         "king": {
             "ability": "Each night, if the dead outnumber the living, you learn 1 alive character. The Demon knows who you are.",
             "edition": "ks",
@@ -2352,6 +2369,23 @@
             "setup": true,
             "team": "demon"
         },
+        "villageidiot": {
+            "ability": "Each night, choose a player: you learn their alignment. [+0 to +2 Village Idiots. 1 of the extras is drunk]",
+            "edition": "experimental",
+            "firstNight": 51,
+            "firstNightReminder": "The Village Idiot points to a player; give a thumbs up if that player is good or a thumbs down if that player is evil.",
+            "id": "villageidiot",
+            "image": "your direct url here",
+            "name": "Village Idiot",
+            "otherNight": 67,
+            "otherNightReminder": "The Village Idiot points to a player; give a thumbs up if that player is good or a thumbs down if that player is evil.",
+            "reminders": [
+                "Drunk"
+            ],
+            "remote_image": "https://raw.githubusercontent.com/chizmw/json-on-the-clocktower/main/data/images/villageidiot.png",
+            "setup": true,
+            "team": "townsfolk"
+        },
         "virgin": {
             "ability": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately.",
             "edition": "tb",
@@ -2793,6 +2827,11 @@
                 "name": "highpriestess",
                 "physicaltoken": false
             },
+            "kazali": {
+                "id": "kazali",
+                "name": "kazali",
+                "physicaltoken": false
+            },
             "knight": {
                 "id": "knight",
                 "name": "knight",
@@ -2846,6 +2885,11 @@
             "steward": {
                 "id": "steward",
                 "name": "steward",
+                "physicaltoken": false
+            },
+            "villageidiot": {
+                "id": "villageidiot",
+                "name": "villageidiot",
                 "physicaltoken": false
             },
             "vizier": {
@@ -3945,6 +3989,7 @@
         "investigator",
         "judge",
         "juggler",
+        "kazali",
         "king",
         "klutz",
         "knight",
@@ -4017,6 +4062,7 @@
         "toymaker",
         "undertaker",
         "vigormortis",
+        "villageidiot",
         "virgin",
         "vizier",
         "vortox",
@@ -4109,6 +4155,10 @@
             {
                 "id": "ojo",
                 "name": "Ojo"
+            },
+            {
+                "id": "kazali",
+                "name": "Kazali"
             }
         ],
         "fabled": [
@@ -4597,6 +4647,10 @@
             {
                 "id": "highpriestess",
                 "name": "High Priestess"
+            },
+            {
+                "id": "villageidiot",
+                "name": "Village Idiot"
             },
             {
                 "id": "knight",

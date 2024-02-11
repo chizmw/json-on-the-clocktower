@@ -144,7 +144,10 @@ class TestJsonData:
             "acrobat",
             "goblin",
             "highpriestess",
+            "kazali",
             "organgrinder",
+            "ojo",
+            "villageidiot",
             "widow",
         ]
         # ).issubset(set(data["editions"]["experimental"].keys()))
