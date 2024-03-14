@@ -4,9 +4,9 @@
 # so we'll crete a script function (code-open) to do that for us
 code-open() {
     if [ -x "$(command -v code-insiders)" ]; then
-        code-insiders "$@"
+        code-insiders --wait "$@"
     else
-        code "$@"
+        code --wait "$@"
     fi
 }
 
