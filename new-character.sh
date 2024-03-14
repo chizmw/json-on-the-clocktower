@@ -20,6 +20,13 @@ else
     SLUG=$1
 fi
 
+# do we have the image in place?
+if [ ! -f "data/images/${SLUG}.png" ]; then
+    echo "Please provide an image in data/images/${SLUG}.png"
+    exit 1
+fi
+git add "data/images/${SLUG}.png" || true
+
 # if the second or third argument is force, set FORCE to true
 if [ "$2" = "force" ] || [ "$3" = "force" ]; then
     FORCE=true
