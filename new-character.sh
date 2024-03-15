@@ -4,9 +4,9 @@
 # so we'll crete a script function (code-open) to do that for us
 code-open() {
     if [ -x "$(command -v code-insiders)" ]; then
-        code-insiders --wait "$@"
+        code-insiders "$@"
     else
-        code --wait "$@"
+        code "$@"
     fi
 }
 
@@ -19,13 +19,6 @@ else
     # the slug is the first argument
     SLUG=$1
 fi
-
-# do we have the image in place?
-if [ ! -f "data/images/${SLUG}.png" ]; then
-    echo "Please provide an image in data/images/${SLUG}.png"
-    exit 1
-fi
-git add "data/images/${SLUG}.png" || true
 
 # if the second or third argument is force, set FORCE to true
 if [ "$2" = "force" ] || [ "$3" = "force" ]; then
