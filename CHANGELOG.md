@@ -1,5 +1,25 @@
 # json-on-the-clocktower
 
+## 0.0.29
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 5 updates ([#158](https://github.com/chizmw/json-on-the-clocktower/pull/158))
+
+- chore(deps-dev): bump the dependencies group with 4 updates ([#154](https://github.com/chizmw/json-on-the-clocktower/pull/154))
+
+- chore(deps-dev): bump the dependencies group with 5 updates ([#151](https://github.com/chizmw/json-on-the-clocktower/pull/151))
+
+- chore(deps-dev): bump the dependencies group with 3 updates ([#156](https://github.com/chizmw/json-on-the-clocktower/pull/156))
+
+- chore(deps): bump the dependencies group with 1 update ([#157](https://github.com/chizmw/json-on-the-clocktower/pull/157))
+
+- chore(deps): bump the dependencies group with 2 updates ([#155](https://github.com/chizmw/json-on-the-clocktower/pull/155))
+
+- feat: add yaggababble character ([#161](https://github.com/chizmw/json-on-the-clocktower/pull/161))
+
+- feat: improve new-character.sh ([#161](https://github.com/chizmw/json-on-the-clocktower/pull/161))
+
 ## 0.0.28
 
 ### Patch Changes
