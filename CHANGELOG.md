@@ -1,5 +1,11 @@
 # json-on-the-clocktower
 
+## 0.0.30
+
+### Patch Changes
+
+- fix: mixup with yaggababble content, changeset info, reverting, missing content :facepalm: ([#163](https://github.com/chizmw/json-on-the-clocktower/pull/163))
+
 ## 0.0.29
 
 ### Patch Changes
