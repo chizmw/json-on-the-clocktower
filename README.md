@@ -1,6 +1,6 @@
 # JSON on the Clocktower
 
-![Version](https://img.shields.io/badge/latest-0.0.28-blue)
+![Version](https://img.shields.io/badge/latest-0.0.29-blue)
 
 <!-- life's too short to worry about markdownlint in this file -->
 <!-- markdownlint-disable MD013 -->
@@ -36,7 +36,7 @@ curl \
   --silent \
   --create-dirs \
   -o data/imported/clocktower.json \
-  https://raw.githubusercontent.com/chizmw/json-on-the-clocktower/0.0.28/data/generated/roles-combined.json
+  https://raw.githubusercontent.com/chizmw/json-on-the-clocktower/0.0.29/data/generated/roles-combined.json
 ```
 
 ### python
