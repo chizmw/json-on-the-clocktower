@@ -300,3 +300,4 @@ data/generated/roles-combined-v?.json
 bloodq.sh
 .tours
 test-results.xml
+.envrc
