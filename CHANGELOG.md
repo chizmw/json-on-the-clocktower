@@ -1,5 +1,13 @@
 # json-on-the-clocktower
 
+## 0.0.31
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 4 updates ([#166](https://github.com/chizmw/json-on-the-clocktower/pull/166))
+
+- new character: summoner ([#168](https://github.com/chizmw/json-on-the-clocktower/pull/168))
+
 ## 0.0.30
 
 ### Patch Changes
