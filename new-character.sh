@@ -5,8 +5,10 @@
 code-open() {
     if [ -x "$(command -v code-insiders)" ]; then
         code-insiders --wait "$@"
-    else
+    elif [ -x "$(command -v code)" ]; then
         code --wait "$@"
+    else
+        $EDITOR "$@"
     fi
 }
 
