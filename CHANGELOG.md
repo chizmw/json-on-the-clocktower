@@ -1,5 +1,11 @@
 # json-on-the-clocktower
 
+## 0.0.32
+
+### Patch Changes
+
+- chore(deps): bump the dependencies group with 1 update ([#170](https://github.com/chizmw/json-on-the-clocktower/pull/170))
+
 ## 0.0.31
 
 ### Patch Changes
