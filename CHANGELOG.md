@@ -1,5 +1,19 @@
 # json-on-the-clocktower
 
+## 0.0.32
+
+### Patch Changes
+
+- chore(deps): bump actions/add-to-project from 0.6.1 to 1.0.1 in the dependencies group ([#178](https://github.com/chizmw/json-on-the-clocktower/pull/178))
+
+- chore(deps-dev): bump the dependencies group with 3 updates ([#177](https://github.com/chizmw/json-on-the-clocktower/pull/177))
+
+- chore(deps): bump the dependencies group with 1 update ([#170](https://github.com/chizmw/json-on-the-clocktower/pull/170))
+
+- chore(deps): bump idna from 3.4 to 3.7 ([#176](https://github.com/chizmw/json-on-the-clocktower/pull/176))
+
+- chore(deps-dev): bump the dependencies group with 3 updates ([#175](https://github.com/chizmw/json-on-the-clocktower/pull/175))
+
 ## 0.0.31
 
 ### Patch Changes
