@@ -1,0 +1,12 @@
+[
+  {
+    "id": "banshee",
+    "image": "your direct url here",
+    "otherNight": 42.1,
+    "otherNightReminder": "Announce that the Banshee has died.",
+    "reminders": ["Has Ability"],
+    "name": "Banshee",
+    "team": "townsfolk",
+    "ability": "If the Demon kills you, all players learn this. From now on, you may nominate twice per day and vote twice per nomination."
+  }
+]
