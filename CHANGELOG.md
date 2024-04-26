@@ -1,5 +1,13 @@
 # json-on-the-clocktower
 
+## 0.0.33
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 2 updates ([#181](https://github.com/chizmw/json-on-the-clocktower/pull/181))
+
+- feat: add banshee character ([#182](https://github.com/chizmw/json-on-the-clocktower/pull/182))
+
 ## 0.0.32
 
 ### Patch Changes
