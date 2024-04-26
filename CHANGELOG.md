@@ -1,5 +1,11 @@
 # json-on-the-clocktower
 
+## 0.0.34
+
+### Patch Changes
+
+- chore(deps): bump chuhlomin/render-template from 1.9 to 1.10 in the dependencies group ([#180](https://github.com/chizmw/json-on-the-clocktower/pull/180))
+
 ## 0.0.33
 
 ### Patch Changes
