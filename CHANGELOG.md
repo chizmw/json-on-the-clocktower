@@ -1,5 +1,17 @@
 # json-on-the-clocktower
 
+## 0.0.35
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 5 updates ([#187](https://github.com/chizmw/json-on-the-clocktower/pull/187))
+
+- feat: add ogre character ([#194](https://github.com/chizmw/json-on-the-clocktower/pull/194))
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 2 updates ([#190](https://github.com/chizmw/json-on-the-clocktower/pull/190))
+
+- chore(deps): bump the dependencies group across 1 directory with 6 updates ([#193](https://github.com/chizmw/json-on-the-clocktower/pull/193))
+
 ## 0.0.34
 
 ### Patch Changes
