@@ -1,5 +1,19 @@
 # json-on-the-clocktower
 
+## 0.0.36
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 5 updates ([#208](https://github.com/chizmw/json-on-the-clocktower/pull/208))
+
+- chore(deps): bump the dependencies group across 1 directory with 7 updates ([#206](https://github.com/chizmw/json-on-the-clocktower/pull/206))
+
+- chore(deps): bump certifi from 2023.7.22 to 2024.7.4 ([#205](https://github.com/chizmw/json-on-the-clocktower/pull/205))
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 3 updates ([#207](https://github.com/chizmw/json-on-the-clocktower/pull/207))
+
+- chore(deps): bump the dependencies group with 2 updates ([#201](https://github.com/chizmw/json-on-the-clocktower/pull/201))
+
 ## 0.0.35
 
 ### Patch Changes
