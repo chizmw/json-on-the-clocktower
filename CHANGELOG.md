@@ -1,5 +1,27 @@
 # json-on-the-clocktower
 
+## 0.0.37
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group with 2 updates ([#213](https://github.com/chizmw/json-on-the-clocktower/pull/213))
+
+- chore(deps-dev): bump the dependencies group with 2 updates ([#214](https://github.com/chizmw/json-on-the-clocktower/pull/214))
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 5 updates ([#219](https://github.com/chizmw/json-on-the-clocktower/pull/219))
+
+- chore(deps): bump urllib3 from 2.0.7 to 2.2.2 ([#199](https://github.com/chizmw/json-on-the-clocktower/pull/199))
+
+- chore(deps-dev): bump the dependencies group with 4 updates ([#212](https://github.com/chizmw/json-on-the-clocktower/pull/212))
+
+- chore(deps-dev): bump the dependencies group with 3 updates ([#210](https://github.com/chizmw/json-on-the-clocktower/pull/210))
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 5 updates ([#221](https://github.com/chizmw/json-on-the-clocktower/pull/221))
+
+- chore(deps): bump peter-evans/create-pull-request from 6 to 7 in the dependencies group ([#218](https://github.com/chizmw/json-on-the-clocktower/pull/218))
+
+- chore(deps): bump micromatch from 4.0.5 to 4.0.8 ([#217](https://github.com/chizmw/json-on-the-clocktower/pull/217))
+
 ## 0.0.36
 
 ### Patch Changes
