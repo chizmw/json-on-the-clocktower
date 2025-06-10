@@ -1,5 +1,15 @@
 # json-on-the-clocktower
 
+## 0.0.39
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 5 updates ([#259](https://github.com/chizmw/json-on-the-clocktower/pull/259))
+
+- chore(deps): bump the dependencies group with 3 updates ([#256](https://github.com/chizmw/json-on-the-clocktower/pull/256))
+
+- chore(deps): bump requests from 2.32.3 to 2.32.4 ([#260](https://github.com/chizmw/json-on-the-clocktower/pull/260))
+
 ## 0.0.38
 
 ### Patch Changes
