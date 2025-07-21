@@ -1,5 +1,21 @@
 # json-on-the-clocktower
 
+## 0.0.39
+
+### Patch Changes
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 5 updates ([#263](https://github.com/chizmw/json-on-the-clocktower/pull/263))
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 5 updates ([#259](https://github.com/chizmw/json-on-the-clocktower/pull/259))
+
+- chore(deps): bump the dependencies group with 3 updates ([#256](https://github.com/chizmw/json-on-the-clocktower/pull/256))
+
+- chore(deps): bump requests from 2.32.3 to 2.32.4 ([#260](https://github.com/chizmw/json-on-the-clocktower/pull/260))
+
+- chore(deps-dev): bump the dependencies group across 1 directory with 3 updates ([#265](https://github.com/chizmw/json-on-the-clocktower/pull/265))
+
+- chore(deps): bump urllib3 from 2.2.2 to 2.5.0 ([#262](https://github.com/chizmw/json-on-the-clocktower/pull/262))
+
 ## 0.0.38
 
 ### Patch Changes
